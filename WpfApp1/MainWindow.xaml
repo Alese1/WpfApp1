@@ -6,7 +6,75 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" 
+                   Text="Вход в систему" 
+                   FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,20"/>
+
+        <!-- Логин -->
+        <TextBlock Grid.Row="1" Grid.Column="0" 
+                   Text="Логин:" 
+                   VerticalAlignment="Center" 
+                   Margin="0,0,10,10"/>
+
+        <TextBox x:Name="txtLogin" Grid.Row="1" Grid.Column="1" 
+                 Height="25" Margin="0,0,0,10"
+                 VerticalContentAlignment="Center"/>
+
+        <!-- Пароль -->
+        <TextBlock Grid.Row="2" Grid.Column="0" 
+                   Text="Пароль:" 
+                   VerticalAlignment="Center" 
+                   Margin="0,0,10,10"/>
+
+        <PasswordBox x:Name="txtPassword" Grid.Row="2" Grid.Column="1" 
+                     Height="25" Margin="0,0,0,10"
+                     VerticalContentAlignment="Center"/>
+
+        <!-- Роль -->
+        <TextBlock Grid.Row="3" Grid.Column="0" 
+                   Text="Роль:" 
+                   VerticalAlignment="Center" 
+                   Margin="0,0,10,10"/>
+
+        <ComboBox x:Name="cmbRole" Grid.Row="3" Grid.Column="1" 
+                  Height="25" Margin="0,0,0,10"
+                  SelectedIndex="0">
+            <ComboBoxItem Content="Пользователь"/>
+            <ComboBoxItem Content="Менеджер"/>
+        </ComboBox>
+
+        <!-- Кнопка входа -->
+        <Button x:Name="btnLogin" Grid.Row="4" Grid.ColumnSpan="2" 
+                Content="Войти" 
+                Height="30" Width="100" 
+                HorizontalAlignment="Center" 
+                Margin="0,10,0,10"
+                Click="btnLogin_Click"/>
+
+        <!-- Сообщение об ошибке -->
+        <TextBlock x:Name="lblError" Grid.Row="5" Grid.ColumnSpan="2"
+                   Text="Введите логин и пароль" 
+                   Foreground="Red" 
+                   HorizontalAlignment="Center"
+                   Visibility="Collapsed"/>
     </Grid>
 </Window>

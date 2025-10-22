@@ -16,9 +16,43 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+     
+            public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            string login = txtLogin.Text;
+            string password = txtPassword.Password;
+            string role = ((System.Windows.Controls.ComboBoxItem)cmbRole.SelectedItem).Content.ToString();
+
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            {
+                lblError.Text = "Введите логин и пароль";
+                lblError.Visibility = Visibility.Visible;
+                return;
+            }
+
+            // Простая проверка (в реальном приложении нужно использовать хеширование)
+            if (login == "user" && password == "user" && role == "Пользователь")
+            {
+                UserWindow userWindow = new UserWindow();
+                userWindow.Show();
+                this.Close();
+            }
+            else if (login == "manager" && password == "manager" && role == "Менеджер")
+            {
+                ManagerWindow managerWindow = new ManagerWindow();
+                managerWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                lblError.Text = "Неверные учетные данные";
+                lblError.Visibility = Visibility.Visible;
+            }
         }
     }
 }
